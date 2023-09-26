@@ -1,0 +1,155 @@
+<section class="container-fluid  flight_serch_box">
+    <h1><strong>Have You any plan to fly somewhere?</strong></h1>
+    <h3>Book Your Flight all over the World.</h3>
+    
+    <hr>
+    <div class="container-fluid">
+        
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box1">
+    <h1>Get Coustomer Support 24*7</h1>
+    <div class="cs_box">
+        <h4>Call Our coustomer care and get help<br> and answer for your queries</h4>
+        <div class="row">
+            <div class="col-md-5">
+                <h5 class="call_no">65142278563</h5>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        
+        <p style="padding: 10px;">24/7 support</p>
+    </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box2">
+                        <form>
+    
+                            <div class="fromLocationTemplate">
+                                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                                <label for=""><h3 style="padding: 5px;">Arrival</h3></label>
+                                
+                                <input type="text" class="form-control" name="from" [(ngModel)]="from" (keypress)="handleFromLocation()">
+                                
+                    
+                                <div class="card mb-3 mt-3" *ngFor="let Location of fromLocation" (click)="handleOrigin(Location)">
+                                    <div class="card-header"><b>Airport Name:</b> {{ Location.name }}</div>
+                                    <div class="card-body">City Name: {{ Location.address.cityName }}
+                                        <br>
+                                        Country Name: {{ Location.address.countryName }}
+                                    </div>
+                                    <div class="card-footer"><b>SubType:</b> {{ Location.subType }}</div>
+                                  </div>
+                             </div>
+                    
+                            <div class="toLocationTemplate">
+                                <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+                                <label for=""><h3 style="padding: 5px;">Departure</h3></label>
+                                
+                                <input type="text" class="form-control" name="to" [(ngModel)]="to" (keypress)="handleToLocation()">
+                                
+                    
+                                <div class="card mb-3 mt-3" *ngFor="let Location of toLocation" (click)="handleDestination(Location)">
+                                    <div class="card-header"><b>Airport Name:</b> {{ Location.name }}</div>
+                                    <div class="card-body">City Name: {{ Location.address.cityName }}
+                                        <br>
+                                        Country Name: {{ Location.address.countryName }}
+                                    </div>
+                                    <div class="card-footer"><b>SubType:</b> {{ Location.subType }}</div>
+                                  </div>
+                                  
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="in_box">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Person</label>
+                                            <select class="form-control" id="exampleFormControlSelect1" name="adults">
+                                              <option>1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                              <option>5</option>
+                                              <option>6</option>
+                                              <option>7</option>
+                                            </select>
+                                          </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-6">
+                                        <div class="in_box">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Travel Class</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                  <option>Economy</option>
+                                                  <option>Business</option>
+                                                  <option>Premium Economy</option>
+                                                  <option>First Class</option>
+                                                </select>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div *ngIf="departureDateTemplate">
+                                <label for=""><h3>Departure Date:</h3></label>
+                                <input type="date" class="form-control" name="date" [(ngModel)]="date">
+                                <br>
+                                <button class="btn btn-secondary" (click)="onFindFlight()" [ngStyle]="{'width': '100%'}" id="bkn_btn">Find Flights</button>
+                    
+                            </div>
+                    
+                    
+                    </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    
+    
+    
+    
+    <div *ngIf="flightTemplate">
+        <h3 style="padding: 20px;">Flight Offers:</h3>
+    
+    
+        <div class="card mb-3 mt-3" *ngFor="let flight of flights">
+      
+                <div class="card-header"><p style="font-size: 22px;">Price :<span style="font-size: 25px; font-weight: 900;">{{ flight.price.total }} ({{ flight.price.currency }})</span></p></div>
+                <div class="card-body">
+    
+      
+                    <p style="font-size: 22px;"> Only <span style="font-size: 25px; font-weight: 900;">{{ flight.numberOfBookableSeats }}</span> Seats Available </p>
+                    <br>
+                    Last Ticketing Date: {{ flight.lastTicketingDate }}
+                    <hr>                  
+                    <h3>Duration: {{ flight.itineraries[0].duration }}</h3>
+    
+                    <p *ngFor="let i of flight.itineraries[0].segments">
+                        <strong>Departure:</strong> {{ i.departure.iataCode }} <strong>at</strong> {{ i.departure.at }}
+                        <em>(Terminal: {{ i.departure.terminal }})</em>
+                        &nbsp;
+                        <strong>Arrival:</strong> {{ i.arrival.iataCode }} <strong>at</strong> {{ i.arrival.at }}
+                        <em>(Terminal: {{ i.arrival.terminal }})</em>
+                        &nbsp;
+                        <strong>Number of stops:</strong> {{ i.numberOfStops }}                        
+                    </p>                    
+    
+                    <hr>
+    
+                    
+                </div>
+                <div class="card-footer"><a routerLink="/booking"><button class="btn btn-warning" id="bkn_btn" [ngStyle]="{'width': '100%'}">Book Flight</button></a></div>
+                
+            
+          </div>
+    </div>
+    
+    
+    </section>
+    
