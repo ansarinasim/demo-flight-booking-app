@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import "dotenv/config";
 import path from "path";
 import colors from "colors";
+import {fileUrlToPath} from "url";
 
 const amadeus = new Amadeus({
   clientId: process.env.CLIENT_ID,
@@ -16,6 +17,9 @@ const app = express();
 //configure env
 dotenv.config();
 
+//module fix
+const __filename = fileUrlToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 //middleware
 app.use(cors());
 app.use(express.json());
