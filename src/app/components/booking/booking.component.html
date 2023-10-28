@@ -1,0 +1,82 @@
+<section class="container-fluid flight-booking">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- flight booking -->
+                <div class="booking_box">
+                    <h3>Book Your Ticket</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p style="margin: 5px;">First Name</p>
+                            <input type="text" name="first" placeholder="Enter Your FirstName" [(ngModel)]="first" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <p style="margin: 5px;">Last Name</p>
+                            <input type="text" name="last" placeholder="Enter Your LastName" [(ngModel)]="last"class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p style="margin: 5px;">Gender</p>
+                            <select class="custom-select" id="inputGroupSelect02" name="gender" style="padding: 17px; margin: 0;">
+                                
+                                <option selected>Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                              </select>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="margin: 5px;">Date of birth</p>
+                            <input type="date" class="form-control" name="dob" [(ngModel)]="date">
+                        </div>
+                    </div>
+                    
+                </div>
+    
+                <div class="contact_cs">
+                    <h3>Contact Info</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" name="email" placeholder="Enter Your email" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="mno" placeholder="Enter Your contact No." class="form-control">
+                        </div>
+                    </div>
+                </div>
+    <div class="ag_box" style="margin: 50px;">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              <p style="margin: 7px;">I confrim that Information is given by me is true and updated.</p>
+            </label>
+          </div>
+          <button class="btn btn-warning" id="bkn_btn" (click)="onBookFlight(flight)"  [ngStyle]="{'width': '100%'}">Book Flight</button>
+    </div>
+                
+            </div>
+            
+            <div class="col-md-4">
+                <div class="bkn_right">
+                    <h5 style="margin: 20px;">Price Details : </h5>
+                    <div class="price_details">
+                        <h3 style="margin: 20px;">350$</h3>
+                    </div>
+        
+                    <h5 style="margin: 20px;">Seats Availability :</h5>
+                    <div class="seats_details">
+                       <h3 style="margin: 20px;">Only 9 Seats lefts</h3>
+                    </div>
+                </div>
+                
+            </div>
+    
+        </div>
+    </div>
+    <div *ngIf="booked">
+        <div class="alert alert-success" role="alert">
+            Successfully Booked the flight
+          </div>
+    </div>
+            </section>
