@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   handleFromLocation() {
 
     if (this.from.length > 3) {
-      fetch(`http://localhost:5000/city-and-airport-search/${this.from}`)
+      fetch(`https://flight-app-20id.onrender.com/city-and-airport-search/${this.from}`)
       .then(response => response.json())
       .then(data => this.fromLocation = data.data)      
     }       
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
   handleToLocation() {
 
     if (this.to.length > 3) {
-      fetch(`http://localhost:5000/city-and-airport-search/${this.to}`)
+      fetch(`https://flight-app-20id.onrender.com/city-and-airport-search/${this.to}`)
       .then(response => response.json())
       .then(data => this.toLocation = data.data)      
     }       
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
     if (this.date == "") {
       alert("Please choose a date")
     } else {
-      fetch(`http://localhost:5000/flight-search?originCode=${this.origin.iataCode}&destinationCode=${this.destination.iataCode}&dateOfDeparture=${this.date}`, {
+      fetch(`https://flight-app-20id.onrender.com/flight-search?originCode=${this.origin.iataCode}&destinationCode=${this.destination.iataCode}&dateOfDeparture=${this.date}`, {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json',
