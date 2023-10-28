@@ -35,33 +35,7 @@ export class BookingComponent {
   ngOnInit(): void {
   }  
 
-  // onFindFlight() {
-    
-  //   if (this.date == "") {
-  //     alert("Please choose a date")
-  //   } else {
-  //     fetch(`http://localhost:5000/flight-search?originCode=${this.origin.iataCode}&destinationCode=${this.destination.iataCode}&dateOfDeparture=${this.date}`, {
-  //     method: 'GET', 
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     }
-  //    })
-  //   .then(response => response.json())
-  //   .then(data => {
-
-  //     this.flights = data.data
-  //     console.log(this.flights)
-  //     this.departureDateTemplate = false
-  //     this.flightTemplate = true
-  //   })
-  //   .catch((error) => {
-
-  //     alert(error)
-  //   });
-  //   }
-    
-  // }
-
+ 
   onBookFlight(flight: any) {
 
     if (this.first == "" && this.last == "") {
@@ -77,7 +51,7 @@ export class BookingComponent {
     const dataForBookingFlight = { flight: flight, name: name }
    
 
-    fetch('http://localhost:5000/flight-confirmation', {
+    fetch('https://flight-app-20id.onrender.com/flight-confirmation', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
@@ -93,7 +67,7 @@ export class BookingComponent {
       console.log(data);
       
 
-      fetch('http://localhost:5000/flight-booking', {
+      fetch('https://flight-app-20id.onrender.com/flight-booking', {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
